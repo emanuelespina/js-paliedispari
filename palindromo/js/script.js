@@ -18,16 +18,16 @@ valore da restituire => è palindroma | non è palindroma
 
 */
 
-function palindromeCheck1 (word){
+function palindromeCheck1(word) {
     const arrayWord = word.split("");
     const reverseArray = arrayWord.reverse();
     const joinArray = reverseArray.join("");
 
     let result;
 
-    if(word === joinArray){
+    if (word === joinArray) {
         result = "è palindroma";
-    }else {
+    } else {
         result = "non è palindroma";
     }
 
@@ -48,27 +48,50 @@ valore da restituire => è palindroma | non è palindroma
 
 */
 
-function palindromeCheck2 (word){
+function palindromeCheck2(word) {
 
     const control = [];
 
     let result = "è palindroma";
 
-    for (let i = 0; i < word.length; i++){
-        if (word[i] === word[(word.length - 1) - i]){
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === word[(word.length - 1) - i]) {
             control.push(true);
-        }else {
+        } else {
             control.push(false);
         }
     }
 
-   for (let i = 0; i < control.length; i++){
-    if (control[i] === false){
-        result = "non è palindroma";
+    for (let i = 0; i < control.length; i++) {
+        if (control[i] === false) {
+            result = "non è palindroma";
+        }
     }
-   }
-    
-   return result;
+
+    return result;
+
+}
+
+
+/*
+
+in questo caso inverto la parola con il coclo for (andando al contrario) be poi lo confronto con la parola 
+
+
+deve dare come risultato true o false
+
+*/
+
+function palindromeCheck3(word) {
+
+    let reverceWord = "";
+
+    for (let i = word.length - 1; i >= 0; i--) {
+        const curLetter = word[i];
+        reverceWord += curLetter;  // equuivale a scrivere word = word + curLetter    
+    }
+
+    return reverceWord === word;
 
 }
 
@@ -79,6 +102,10 @@ const message1 = `La parola ${palindromeCheck1(userWord)}`;
 
 const message2 = `La parola ${palindromeCheck2(userWord)}`;
 
+const message3 = `La parola ${palindromeCheck3(userWord)}`;
+
 console.log(message1);
 
 console.log(message2);
+
+console.log(message3);
